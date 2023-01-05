@@ -1,0 +1,72 @@
+type Customer{
+    id:ID!
+    nom:String!
+    prenom:String!
+    email:String!
+    telephone:String!
+    ville:Stirng!
+    quartier:Stirng!
+    localisation:Stirng!
+
+}
+
+type Salesperson{
+    id:ID!
+    nom:String!
+    prenom:String!
+    email:String!
+    telephone:String!
+    ville:Stirng!
+    quartier:Stirng!
+    localisation:Stirng! 
+
+}
+
+
+type Product{
+     id:ID!
+     name:Stirng!
+     size:String!
+     variety:String!
+     price:Float!
+     status:String!
+}
+
+type Order{
+     id:ID!
+     customer:Customer,
+     salesperson:Salesperson,
+     orderLines:[OrderLines]
+}
+
+type OrderLine{
+     id:ID!
+     order:Order,
+     product:Product,
+     quantity:int!
+}
+
+
+type Query{
+    customers: [Customer]!
+    customerById(id:ID): Customer
+    customerByEmail(email:String): Customer
+    
+}
+
+input CustomerInput{
+    nom:String!
+    prenom:String!
+    email:String!
+    telephone:String!
+    ville:Stirng!
+    quartier:Stirng!
+    localisation:Stirng!
+}
+
+type Mutations{
+
+    addCustomer(input:CustomerInput):Customer
+    
+  
+}
